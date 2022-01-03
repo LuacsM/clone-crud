@@ -3,7 +3,7 @@ const { crypto } = require('../utils/password')
 
 function index (req, res) {
     res.render('register', {
-        title: 'Cadastro de Clientes'
+        title: 'Cadastro de Alunos'
     })
 }
 
@@ -45,14 +45,21 @@ async function add(req, res){
     })
 
     register.save()
-    res.send('Cadastro realizado!')
+    res.render('register', {
+        title: 'Cadastro de Alunos',
+        message: 'Cadastro Realizado com Sucesso!',
+
+    })
 }
 
 
-function listUsers(req, res){
+async function listUsers(req, res){
+    const users = await CustomersModel.find()
+
+
     res.render('listUsers', {
         title: 'Listagem de Usuários',
-        users: []
+        users,
     })
 }
 

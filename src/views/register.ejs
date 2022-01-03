@@ -12,6 +12,12 @@
       </div>
 
         <div class="container">
+          <% if (typeof message !== 'undefined') { %>
+            <div class="alert alert-primary" role="alert">
+              <%= message %> 
+            </div>
+          <% } %>
+
           <form class="row g-3" action="/cadastro/add" method="POST" data-toggle="validator">
             <div class="col-md-6">
                 <label for="inputCity" class="form-label">Nome</label>
@@ -33,7 +39,7 @@
               </div>
 
               <div class="col-md-2">
-                <label for="inputCity" class="form-label">Contato</label>
+                <label for="inputCity" class="form-label">Contato 1</label>
                 <input type="text" class="form-control" id="inputCPF" placeholder="Digite número do responsável..." name="tel" onkeypress="$(this).mask('(00) 00000-0000')" required>
               </div>
 
