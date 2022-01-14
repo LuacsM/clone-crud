@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('partials/head.ejs') %> 
+    <body>
+        <%- include('partials/navbar.ejs') %>
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4"><%= title %></h1>
+              <p class="lead">Entre com sua Matricula para cadastrar suas informações</p>
+            </div>
+        </div>
+
+
+
+        <div class="container">
+
+            <form class="d-flex" action="/result" method="get">
+                <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="query">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+   
+<%
+            if(results){
+                if(user.length > 0){
+        %>
+        <b>Resultados da pesquisa por <%= search %>:</b>
+        <ul>
+            <% user.forEach(function(nome){ %>
+                <li><%= nome.name %></li>
+            <% }); %>
+        </ul>
+        <% } else{ %>
+            <b>Nenhum resultado encontrado para <%= search %>!</b>
+        <% 
+            }
+        }
+        %>
+        </div>
+
+        
+        
+        <%- include('partials/footer.ejs') %> 
+        <%- include('partials/foot.ejs') %> 
+    </body>
+</html>

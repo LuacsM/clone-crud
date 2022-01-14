@@ -7,16 +7,19 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-4"><%= title %></h1>
-              <p class="lead">Listagem de Alunos Cadastrados abaixo.</p>
+              <p class="lead">Listagem da pesquisa por "<%= aluno %>"</p>
             </div>
         </div>
 
-
-
         <div class="container">
+            <form class="d-flex" action="/result" method="get">
+                <input class="form-control me-2" type="text" placeholder="Pesquisa" aria-label="Search" name="query">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+
             <ul class="list-group" style="margin-top: 40px;">
-                <% users.forEach((user) => { %>
-                  
+                <% dados.forEach((user) => { %>
+                 
                    
                   
                     
@@ -30,6 +33,8 @@
                 
                 <% }); %> 
             </ul>
+   
+
         </div>
 
         
