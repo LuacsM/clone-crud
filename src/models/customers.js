@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
     name: String,
     age: String,
+    matricula: String,
     nameMother: String,
     cpf: String,
     tel: String,

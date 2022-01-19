@@ -24,6 +24,10 @@
                 <input type="text" class="form-control" id="inputName" placeholder="Digite o Nome Completo do aluno..." name="name" required>
               </div>
               <div class="col-md-2">
+                <label for="inputZip" class="form-label">Matrícula</label>
+                <input type="txt" class="form-control" id="inputMat" name="matricula" onkeypress="$(this).mask('0000000-0')" required>
+              </div>
+              <div class="col-md-2">
                 <label for="inputZip" class="form-label">Data de Nascimento</label>
                 <input type="txt" class="form-control" id="inputAge" name="age" onkeypress="$(this).mask('00/00/0000')" required>
               </div>

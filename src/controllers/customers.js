@@ -10,7 +10,8 @@ function index (req, res) {
 
 async function add(req, res){
     const {
-        name, 
+        name,
+        matricula,
         age,
         nameMother,
         cpf,
@@ -30,6 +31,7 @@ async function add(req, res){
 
     const register = new CustomersModel({
         name,
+        matricula,
         age,
         nameMother,
         cpf,
@@ -84,16 +86,21 @@ async function pesquisa(req, res, next){
 
 async function resultado(req, res, next){
         const users = await CustomersModel.find()
-        const nome = req.query
-        const aluno = nome.query
+        const pesquisa = req.query
+
+        const matri = pesquisa.query
+        const nasc = pesquisa.data
+
+        
 
         const dados = await CustomersModel.find({
-            name: aluno,
+            matricula: matri,
+            age: nasc
         })
 
-        //console.log(dados)
+        console.log(dados.length)
 
-        res.render('result', { title: 'Resultado', aluno, users, dados});
+        res.render('result', { title: 'Resultado', pesquisa, users, dados});
    
 }
 
@@ -101,6 +108,7 @@ async function resultado(req, res, next){
 async function edit(req, res){
     const {
         name, 
+        matricula,
         age,
         nameMother,
         cpf,
@@ -120,6 +128,7 @@ async function edit(req, res){
 
     const user = await CustomersModel.findById(id)
     user.name = name
+    user.matricula = matricula
     user.age = age
     user.nameMother = nameMother
     user.cpf = cpf

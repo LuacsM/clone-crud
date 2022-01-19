@@ -7,15 +7,31 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-4"><%= title %></h1>
-              <p class="lead">Listagem da pesquisa por "<%= aluno %>"</p>
+              <p class="lead">Listagem da pesquisa por "<%= pesquisa.query %>" e "<%= pesquisa.data %>"</p>
             </div>
         </div>
 
         <div class="container">
-            <form class="d-flex" action="/result" method="get">
-                <input class="form-control me-2" type="text" placeholder="Pesquisa" aria-label="Search" name="query">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
+
+            <% if (dados.length == '0') { %>
+                <div class="alert alert-danger" role="alert">
+                  Aluno Não Encontrado
+                </div>
+            <% } %>
+
+            <form class="row g-3" action="/result" method="get">
+                <div class="col-md-6">
+                    <input class="form-control me-2" type="text" placeholder="Matrícula" aria-label="Search" name="query" onkeypress="$(this).mask('0000000-0')" required>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control me-2" type="text" placeholder="Data de Nascimento" aria-label="Search" name="data" onkeypress="$(this).mask('00/00/0000')">
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
             </form>
+
 
             <ul class="list-group" style="margin-top: 40px;">
                 <% dados.forEach((user) => { %>
